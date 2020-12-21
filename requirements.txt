@@ -1,0 +1,4 @@
+-r requirements-dev.txt
+psycopg2==2.8.4
+pycpfcnpj==1.5.1
+django-cors-headers==3.4.0

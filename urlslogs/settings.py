@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'urlslogs.wsgi.application'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
-LANGUAGE_CODE = 'en-us' # todo: mudar para portugues Brasil
+LANGUAGE_CODE = 'pt-br' # todo: mudar para portugues Brasil
 TIME_ZONE = 'America/Sao_Paulo'
 USE_I18N = True
 USE_L10N = True

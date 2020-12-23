@@ -1,34 +1,13 @@
 import json
+import boto3
 
 from datetime import date, datetime
 
-import boto3
-from django.shortcuts import render
+import pytz
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
 from urlslogs import settings
 from urlslogs.apps.cloudwatch.create import teste_cloud_log
-from urlslogs.apps.utilidades.api_utils import obter_body, processar_requisicao
-
-
-# def lista_usuario(request, pk=None):
-#     """
-#     Chama a api do tabelao, onde irá enviar os dados do usuario que invocou a funcao de registro de log.
-#     Desde que seja passado no headers do [registra_log], o token do usuario responsável por invoca-la. Caso não passe
-#     o token, irá ser salvo o log com info_usuario vazio.
-#     """
-#     retorno, body = obter_body(request)
-#
-#     # processar a requisição invocando o tabelão
-#     retorno, it = processar_requisicao(request,  # request de entrada para ser tratado
-#                                        "retorna_usuario",  # nome_api: nome da função da api no tabelão.
-#                                        body,  # body (opcional): Corpo Json da requisição externa
-#                                        pk,# pk (opcional): Quando a api requisitar, identificar o PK por aqui para trazer um registro específico
-#                                        None)  # campo_body (opcional): Pode ser um campo específico, como o id, ou podem ser vários em uma tupla. Este parametro compõe o URi.
-#
-#     # retornar o resultado, quero apenas o username do usuario logado
-#     return it
 
 
 # processar_requisicao(request=None, nome_api=None, body=None, pk=None, campo_body=None, nome_endpoint="tabelao",
@@ -72,7 +51,8 @@ def registra_log_requisicao(request):
 
         objeto = body_data
 
-        data_hora = datetime.now()
+        fuso_horario = pytz.timezone('America/Sao_Paulo')
+        data_hora = datetime.now().astimezone(fuso_horario)
         objeto['info_data_hora'] = data_hora.strftime("%d/%m/%Y, %H:%M:%S")
 
         # nome do inquilino para criar no log que é dele

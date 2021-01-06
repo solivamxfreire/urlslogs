@@ -166,7 +166,7 @@ def view_log_events(request):
         if parametros['nome_usuario']:
 
             for item in list_logs:
-                if item['info_usuario'] == parametros['nome_usuario']:
+                if item['usuario_nome'] == parametros['nome_usuario']:
                     list_logs_filtro_usuario.append(item)
 
             list_logs = list_logs_filtro_usuario

@@ -24,11 +24,13 @@ def registra_log_requisicao(request):
     O formato esperado do json é:
          {
             "nome_tenant": "pernambucanas",
-            "mensagem": "GET method - lista_funcionario/ 200",
-            "usuario": "eduardo_edu",
-            "usuario_id": 1,
-            "funcionario": "Eduardo Edu",
-            "funcionario_id": 2
+            "url": "/fornecedor/8999/",
+            "metodo": "GET",
+            "status": 200,
+            "usuario_nome": null,
+            "usuario_id": 2,
+            "funcionario_nome": null,
+            "funcionario_id": 2,
         }
     * Observe o que significa cada campo da requisicao:
         - nome_tenant: deverá ser o mesmo nome do schema do inquilino.
